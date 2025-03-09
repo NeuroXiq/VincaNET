@@ -49,7 +49,7 @@ namespace Vinca.Http
         /// <summary>
         public static bool TryGetFromPath(string path, out string contentType)
         {
-            if (!string.IsNullOrWhiteSpace(path))
+            if (!string.IsNullOrWhiteSpace(path) && path.Contains('.'))
             {
                 int lastDot = path.LastIndexOf('.');
                 var ext = path.Substring(lastDot);

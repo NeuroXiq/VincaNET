@@ -34,11 +34,12 @@ namespace Vinca.Http
                 context.Response.StatusCode = StatusCodes.Status400BadRequest;
 
                 context.Response.ContentType = "application/json; charset=UTF-8";
-                await context.Response.WriteAsJsonAsync(new { ValidationError = e.Message });
+                await context.Response.WriteAsJsonAsync(new { Error = e.Message });
             }
             catch (StatusCodeException e)
             {
                 context.Response.StatusCode = (int)e.StatusCode;
+                if (e.JsonResult != null) await context.Response.WriteAsJsonAsync(e.JsonResult);
             }
             catch (Exception e)
             {

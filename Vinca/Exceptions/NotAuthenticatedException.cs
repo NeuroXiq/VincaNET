@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Vinca.Exceptions
 {
-    public class AppException : Exception
+    public class NotAuthenticatedException : AppException
     {
-        public AppException(string message) : base(message){ }
-        public AppException() : base() { }
+        public NotAuthenticatedException() : base()
+        {
+        }
     }
 }
